@@ -1,0 +1,42 @@
+{% extends 'main/_base.html' %}
+
+{% block title %} Add Single Device {% endblock %}
+
+{% block content %}
+<div class="section">
+    <div class="row">
+        <div class="col-xl-5">
+            <div class="panel panel--loose panel--raised base-margin-bottom">
+                <h2 class="subtitle">Add Single device</h2>
+                <hr>
+                <form method="post" action="/add/">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" name="add" class="btn btn--primary">Add</button>
+                </form>
+                <div id="status_box"></div>
+            </div>
+        </div>
+        <div class="col-xl-7">
+            <div class="panel panel--loose panel--raised base-margin-bottom">
+                <h2 class="subtitle">What does it do?</h2>
+                <hr>
+                <div class="alert alert--info">
+                    <div class="alert__icon icon-info-outline"></div>
+                    <div class="alert__message">
+                        <p>Insert here the credentials for your device to get the device information which will be added to the internal database. You can afterwards view the gathered device information on the "Show all Devices" page.</p>
+                        <p>Try it out with the always-on <a href="https://devnetsandbox.cisco.com/" target="_blank">DevNet sandbox</a>:</p>
+                        <ul>
+                            <li>Address: sandbox-iosxe-latest-1.cisco.com</li>
+                            <li>Username: developer</li>
+                            <li>Password: C1sco12345</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ response_output | json_script:"response_output" }}
+<script>task_status("task_normal")</script>
+{% endblock %}

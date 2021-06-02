@@ -1,0 +1,18 @@
+{% extends 'main/_base.html' %}
+
+{% block title %} Logs {% endblock %}
+
+{% block content %}
+<div class="section" id="scroll">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="panel panel--loose panel--raised base-margin-bottom">
+                <h2 class="subtitle">Logs</h2>
+                <hr>
+                <pre>{{ logs }}</pre>
+            </div>
+        </div>
+    </div>
+</div>
+<script>scroll_bottom()</script>
+{% endblock %}
