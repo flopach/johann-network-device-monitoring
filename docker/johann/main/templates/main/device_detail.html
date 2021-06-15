@@ -109,52 +109,6 @@
                     </table>
                 </div>
             </div>
-        </div>
-        <div class="col-xl-4">
-            <div class="panel panel--loose panel--raised base-margin-bottom" style="text-align:center;">
-                Last Database Update: {{ device.last_update }}
-            </div>
-            <div class="panel panel--loose panel--raised base-margin-bottom">
-                <h2 class="subtitle">CPU + Memory + Disk</h2>
-                <hr>
-                <div class="subheader" style="text-align: center;">Memory Status Snapshot</div>
-                <div class="subheader">Status: <b>{{ device.memory_status }}</b></div>
-                <div class="subheader">Total Memory: <b>{{ device.memory_total_mb }} MB</b></div>
-                <div class="subheader">Memory used: <b>{{ device.memory_used_percentage }}%</b></div>
-                <div class="progressbar progressbar--warning" data-percentage="{{ device.memory_used_percentage }}">
-                    <div class="progressbar__fill"></div>
-                </div>
-                <div class="subheader">Memory available: <b>{{ device.memory_available_percentage }}%</b></div>
-                <div class="progressbar progressbar--success" data-percentage="{{ device.memory_available_percentage }}">
-                    <div class="progressbar__fill"></div>
-                </div>
-                <div class="dbl-margin-top"></div>
-                <div class="subheader" style="text-align: center;">CPU Status Snapshot</div>
-                <div class="subheader">CPU Utlization User: <b>{{ device.cpu_totalavg_user_percentage }}%</b></div>
-                <div class="progressbar progressbar--info" data-percentage="{{ device.cpu_totalavg_user_percentage|floatformat:0 }}">
-                    <div class="progressbar__fill"></div>
-                </div>
-                <div class="subheader">CPU Utlization System: <b>{{ device.cpu_totalavg_system_percentage }}%</b></div>
-                <div class="progressbar progressbar--secondary" data-percentage="{{ device.cpu_totalavg_system_percentage|floatformat:0 }}">
-                    <div class="progressbar__fill"></div>
-                </div>
-                <div class="subheader">CPU Utlization Idle: <b>{{ device.cpu_totalavg_idle_percentage }}%</b></div>
-                <div class="progressbar progressbar--success" data-percentage="{{ device.cpu_totalavg_idle_percentage|floatformat:0 }}">
-                    <div class="progressbar__fill"></div>
-                </div>
-                <div class="dbl-margin-top"></div>
-                <div class="subheader" style="text-align: center;">Disks Status Snapshot</div>            
-                {% for partition in device.partitions_list %}           
-                    <div class="subheader" style="font-size:14px;">{{ partition }}</div>
-                {% endfor %}
-                <div class="dbl-margin-bottom"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="section">
-    <div class="row">
-        <div class="col-xl-12">
             <div class="panel panel--loose panel--raised base-margin-bottom">
                 <h2 class="subtitle">Operational Data</h2>
                 <hr>
@@ -202,6 +156,57 @@
                         </tr>
                     </table>
                 </div>
+            </div>
+        </div>
+        <div class="col-xl-4">
+            <div class="panel panel--loose panel--raised base-margin-bottom" style="text-align:center;">
+                Last Database Update: {{ device.last_update }}
+            </div>
+            <div class="panel panel--loose panel--raised base-margin-bottom dbl-padding">
+                <h2 class="subtitle">Memory Status Snapshot</h2>
+                <hr>
+                <div class="subheader">Status: <b>{{ device.memory_status }}</b></div>
+                <div class="subheader">Total Memory: <b>{{ device.memory_total_mb }} MB</b></div>
+                <div class="subheader">Memory used: <b>{{ device.memory_used_percentage }}%</b></div>
+                <div class="progressbar progressbar--warning" data-percentage="{{ device.memory_used_percentage }}">
+                    <div class="progressbar__fill"></div>
+                </div>
+                <div class="subheader">Memory available: <b>{{ device.memory_available_percentage }}%</b></div>
+                <div class="progressbar progressbar--success" data-percentage="{{ device.memory_available_percentage }}">
+                    <div class="progressbar__fill"></div>
+                </div>
+            </div>
+            <div class="panel panel--loose panel--raised base-margin-bottom dbl-padding">
+                <h2 class="subtitle">CPU Status Snapshot</h2>
+                <hr>
+                <div class="subheader">CPU Utlization User: <b>{{ device.cpu_totalavg_user_percentage }}%</b></div>
+                <div class="progressbar progressbar--info" data-percentage="{{ device.cpu_totalavg_user_percentage|floatformat:0 }}">
+                    <div class="progressbar__fill"></div>
+                </div>
+                <div class="subheader">CPU Utlization System: <b>{{ device.cpu_totalavg_system_percentage }}%</b></div>
+                <div class="progressbar progressbar--secondary" data-percentage="{{ device.cpu_totalavg_system_percentage|floatformat:0 }}">
+                    <div class="progressbar__fill"></div>
+                </div>
+                <div class="subheader">CPU Utlization Idle: <b>{{ device.cpu_totalavg_idle_percentage }}%</b></div>
+                <div class="progressbar progressbar--success" data-percentage="{{ device.cpu_totalavg_idle_percentage|floatformat:0 }}">
+                    <div class="progressbar__fill"></div>
+                </div>
+            </div>
+            <div class="panel panel--loose panel--raised base-margin-bottom dbl-padding">
+                <h2 class="subtitle">Disk Status</h2>
+                <hr>
+                {% for partition in device.partitions_list %}           
+                    <div class="subheader"><b>{{ partition.p_name }}</b> {{ partition.p_status }} | Total: {{ partition.p_total_mb }} MB</div>
+                    <div class="subheader">Used: <b>{{ partition.p_used_mb }}MB</b></div>
+                    <div class="progressbar progressbar--warning" data-percentage="{{ partition.p_used_percent }}">
+                        <div class="progressbar__fill"></div>
+                    </div>
+                    <div class="subheader">Available: <b>{{ partition.p_free_mb }}MB</b></div>
+                    <div class="progressbar progressbar--success" data-percentage="{{ partition.p_free_percent }}">
+                        <div class="progressbar__fill"></div>
+                    </div>
+                    <div class="dbl-margin-top"></div>
+                {% endfor %}
             </div>
         </div>
     </div>

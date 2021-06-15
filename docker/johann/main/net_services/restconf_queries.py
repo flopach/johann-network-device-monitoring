@@ -213,14 +213,14 @@ class new_iosxe_device:
             pass
 
         # partitions and filesystems
-        # getting data only from first filesystem
         try:
             partitions = []
             for p in r_content["q-filesystem"][0]["partitions"]:
                 p_total_mb = round(int(p["total-size"]) / 1000)
                 p_used_mb = round(int(p["used-size"]) / 1000)
                 p_free_mb = p_total_mb - p_used_mb
-                partitions.append("{} (total: {}MB, used: {}MB, free: {}MB, status:{})".format(p["name"],p_total_mb,p_used_mb,p_free_mb,p["disk-status"]))
+                p_free_percent = 100 - int(p["used-percent"])
+                partitions.append({ "p_name" : p["name"], "p_status": p["disk-status"], "p_total_mb" : p_total_mb, "p_used_mb": p_used_mb, "p_free_mb": p_free_mb, "p_used_percent" : p["used-percent"], "p_free_percent" : p_free_percent })
             self.new_device.partitions_list = partitions
         except:
             pass

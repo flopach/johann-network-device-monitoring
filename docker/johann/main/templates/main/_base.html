@@ -12,7 +12,7 @@
             <div class="container-fluid">
                 <div class="header-panels">
                     <div class="header-panel hidden-md-down">
-                        <a class="header__logo" href="http://www.github.com" target="_blank">
+                        <a class="header__logo" href="https://github.com/flopach/johann-network-device-monitoring" target="_blank">
                             <img src="{% static 'main/img/johann-logo-alone.png' %}" width="35" />
                         </a>
                         <h1 class="header__title">
@@ -20,7 +20,7 @@
                         </h1>
                     </div>
                     <div class="header-panel header-panel--right hidden-md-down">
-                        <a href="https://github.com" class="header-item" target="_blank">johann Help & FAQ</a>
+                        <a href="https://github.com/flopach/johann-network-device-monitoring" class="header-item" target="_blank">johann Help & FAQ</a>
                         <a href="https://developer.cisco.com" class="header-item" target="_blank">Cisco DevNet</a>
                     </div>
                         
@@ -56,11 +56,15 @@
                                 <span>Show all Devices</span>
                             </a>
                         </li>
-                        <li class="sidebar__item">
-                            <a tabindex="0" title="Reports" href="/reports">
+                        <li class="sidebar__drawer sidebar__drawer--closed" id="drawer_reports">
+                            <a tabindex="0" title="Reports">
                                 <span class="icon-graph"></span>
                                 <span>Reports</span>
                             </a>
+                            <ul>
+                                <li class="sidebar__item"><a href="/device_stats/">Device Stats</a></li>
+                                <li class="sidebar__item"><a href="/oneview">One View + Export</a></li>
+                            </ul>
                         </li>
                         <li class="sidebar__drawer sidebar__drawer--closed" id="drawer_tools">
                             <a tabindex="0" title="Tools">
@@ -68,6 +72,7 @@
                                 <span>Tools</span>
                             </a>
                             <ul>
+                                <li class="sidebar__item"><a href="/admin">Database Admin</a></li>
                                 <li class="sidebar__item"><a href="/enable_restconf">Enable RESTCONF</a></li>
                                 <li class="sidebar__item"><a href="/raw_json">show run in JSON</a></li>
                                 <li class="sidebar__item"><a href="/logs">Logs</a></li>

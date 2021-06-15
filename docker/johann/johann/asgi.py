@@ -17,8 +17,6 @@ from channels.auth import AuthMiddlewareStack
 from channels.security.websocket import AllowedHostsOriginValidator
 import main.routing
 
-#os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'johann.settings_production')
-
 application = ProtocolTypeRouter({
     "http": asgi_application,
     "websocket": AllowedHostsOriginValidator(

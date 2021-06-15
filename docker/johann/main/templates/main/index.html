@@ -7,17 +7,14 @@
 <div class="section">
     <div class="row">
         <div class="col-xl-12">
-            <div class="panel panel--loose panel--raised base-margin-bottom">
-                <h2 class="subtitle">johann: Network Device Monitoring</h2>
-                <hr>
+            <div class="panel panel--loose panel--raised">
                 <div style="display: flex;">
-                    <div style="margin:20px;"><img src="{% static 'main/img/johann-logo-alone.png' %}" width="250"  /></div>
+                    <div style="margin:20px;"><img src="{% static 'main/img/johann-logo-alone.png' %}" width="250" /></div>
                     <div>
-                        <h3 class="section">johann is here to help!</h3>
-                        <p>A simple network device monitoring tool for <strong>Cisco IOS XE devices</strong>.</p>
-                        <p>Showcasing the power of direct device communication with <b>RESTCONF</b>.</p>
-                        <p>Gathering configuration and operational data in a <u>structured</u> way!</p>
-                        <p>Do you have questions or requests? Check out the docs on the <a href="https://github.com/">Github repository</a>!</p>
+                        <h2 class="section">johann is here to help!</h3>
+                        <h5>A simple network device monitoring tool for <strong>Cisco IOS XE devices</strong>.</h5>
+                        <h5>Showcasing the power of direct device communication with <b>RESTCONF</b>.</h5>
+                        <h5>Gathering <b>configuration and operational data</b> of your devices in a <u>structured</u> way!</h5>
                     </div>
                 </div>
             </div>
@@ -26,9 +23,24 @@
 </div>
 <div class="section">
     <div class="row">
+        <div class="col-xl-4">
+            <div class="panel panel--loose panel--raised dbl-padding base-margin-bottom" style="height:100%;">
+                <h5>Do you have questions or requests?</h5>
+                <h5>Check out the docs on the <a href="https://github.com/flopach/johann-network-device-monitoring">Github repository</a>!</h5>
+            </div>
+        </div>
+        <div class="col-xl-8">
+            <div class="panel panel--loose panel--raised">
+                <img src="{% static 'main/img/johann-teaser.png' %}" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="row">
         <div class="col-xl-12">
             <div class="panel panel--loose panel--raised base-margin-bottom">
-            <div class="subheader text-center">3 Simple Steps</div>
+            <div class="subheader text-center"><h5>3 Simple Steps</h5></div>
             <div class="steps steps--primary">
                 <div class="step visited">
                     <div class="step__icon">1</div>
@@ -47,4 +59,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}

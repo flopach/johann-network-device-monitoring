@@ -1,0 +1,30 @@
+{% extends 'main/_base.html' %}
+
+{% block title %} Reports {% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="section">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="panel panel--loose panel--raised">
+                <h2 class="subtitle">Reports</h2>
+                <hr>
+                {% if response_output.status == "empty"  %}
+                    The database is empty. Please <a href="/add">add your devices</a> first to see some data here.
+                {% elif response_output.status == "success"  %}
+                    Total devices in database: <b>{{ response_output.total_devices }}</b>
+                    <div style="display: flex; flex-wrap:wrap;">
+                        <div style="margin:20px;"><img src="{% static 'main/img/ios_version_count.png' %}" /></div>
+                        <div style="margin:20px;"><img src="{% static 'main/img/ios_memory_status.png' %}" /></div>
+                        <div style="margin:20px;"><img src="{% static 'main/img/interfaces_oper_status.png' %}" /></div>
+                        <div style="margin:20px;"><img src="{% static 'main/img/iox_status.png' %}" /></div>
+                    </div>
+                {% else %}
+                    There was an error when creating the graphs. Please check the <a href="/logs">logs</a>.
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,6 +1,8 @@
 /* 
 Javascript for johann
 */
+
+// menu bar - open/close function
 $(document).ready(function(){
 
     function change_drawer(element_id) { 
@@ -22,9 +24,13 @@ $(document).ready(function(){
         change_drawer.call(this, "#drawer_tools")
     });
 
+    $("#drawer_reports").on("click", function() { 
+        change_drawer.call(this, "#drawer_reports")
+    });
+
 });
 
-
+// Websocket Stuff when getting information from the celery tasks
 function task_status(task_type) {
     const response_output = JSON.parse(document.getElementById('response_output').textContent);
         
@@ -32,25 +38,30 @@ function task_status(task_type) {
         'ws://'+window.location.host+'/ws/status/'
     );
 
-    /* If task was created, message/task_id is sent. If received, start getting the task info via WS */
+    function request_task_status(e) {
+        StatusSocket.send(JSON.stringify(
+        {
+            "type" : task_type,
+            "task_id": response_output
+        }));
+    }
+
+    /* When task was created, message/task_id is sent. If received, start getting the task info via WS */
     if (response_output) {
         StatusSocket.onopen = function(e) {
-            StatusSocket.send(JSON.stringify(
-            {
-                "type" : task_type,
-                "task_id": response_output
-            }));
+            request_task_status();
     }};
         
     /* Display the incoming message */
     StatusSocket.onmessage = function(e) {
         const msg = JSON.parse(e.data);
-        console.log(msg);
+        //console.log(msg);
 
         if (msg.type == "t_status") {
             $('#status_box').html('<div class="alert alert--info"> \
             <div class="loader loader--small" aria-label="Loading, please wait..."><div class="wrapper"><div class="wheel" id="status_wheel"></div></div></div> \
             <div style="flex-grow: 1; margin-left:5%; align-self:center;">'+msg.content+'</div></div>');
+            setTimeout(request_task_status, 2000); // keep requesting the task status until finished every 2 seconds
         }
         else if (msg.type == "t_result") {
 
@@ -89,6 +100,8 @@ function task_status(task_type) {
     };
 }
 
+
+// scrolling for the logs page
 function scroll_bottom() {
     $("html, body").animate({
         scrollTop: $("#scroll").height()

@@ -1,0 +1,20 @@
+{% extends 'main/_base.html' %}
+
+{% block title %} Reports {% endblock %}
+
+{% block content %}
+<div class="section">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="panel panel--loose panel--raised">
+                <h2 class="subtitle">Showing all devices in one view</h2>
+                <hr>
+                <p align="right"><a href="/oneview_export_xls" download><button class="btn btn--primary">Export as .XLSX</button></a></p>
+                <div class="responsive-table">
+                {{ response_output|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

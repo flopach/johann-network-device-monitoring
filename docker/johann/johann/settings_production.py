@@ -5,16 +5,19 @@ Django settings for johann project.
 from pathlib import Path
 import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Paths
 BASE_DIR = Path(__file__).resolve().parent.parent
-DATA_DIR = BASE_DIR / "stickydata"
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
-SECRET_KEY = '4gd_7o%pnm-9my^g5**5rlenms+bp8c5fe-eu!08po0m3q@((v' #os.environ['SECRET_KEY']
+MEDIA_URL = '/stickydata/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "stickydata/")
 
-DEBUG = True
+IMG_FOLDER_PATH = os.path.join(BASE_DIR, "static/main/img/")
 
+SECRET_KEY = os.environ['SECRET_KEY']
+DEBUG = False
 ALLOWED_HOSTS = ["localhost"]
 
 
@@ -73,6 +76,7 @@ CHANNEL_LAYERS = {
 }
 
 # CELERY CONFIGURATION
+
 CELERY_BROKER_URL = 'redis://redis:6379'
 CELERY_RESULT_BACKEND = 'redis://redis:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
@@ -87,7 +91,7 @@ CELERY_TIMEZONE = 'Europe/London'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(DATA_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(MEDIA_ROOT, 'db.sqlite3'),
     }
 }
 
@@ -140,7 +144,7 @@ LOGGING = {
             'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': os.path.join(DATA_DIR, 'debug.log'),
+            'filename': os.path.join(MEDIA_ROOT, 'debug.log'),
             'formatter': 'applogger_format'
         }
     },

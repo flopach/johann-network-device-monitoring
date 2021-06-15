@@ -6,10 +6,6 @@ services:
   redis:
     image: redis:6.2.3-alpine
     restart: always
-    ports:
-      - "6379:6379"
-    networks:
-      - net_johann
 
   johann:
     build: ${PWD}/johann/.
@@ -19,8 +15,6 @@ services:
       - ./johann/stickydata:/opt/johann/stickydata #for saving tmp files
     depends_on:
       - redis
-    networks:
-      - net_johann
   
   celery_worker:
     build: ${PWD}/johann/.
@@ -30,8 +24,6 @@ services:
       - ./johann/stickydata:/opt/johann/stickydata #for saving tmp files
     depends_on:
       - redis
-    networks:
-      - net_johann
 
   nginx:
     build: ${PWD}/nginx/.
@@ -43,11 +35,11 @@ services:
     depends_on:
       - johann
       - redis
-    networks:
-      - net_johann
+#    networks:
+#      - net_johann
       
-networks:
-  net_johann:
+#networks:
+#  net_johann:
 
 volumes:
   static_content:

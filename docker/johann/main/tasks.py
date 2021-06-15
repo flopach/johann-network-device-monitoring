@@ -12,7 +12,7 @@ logger = logging.getLogger("applogger")
 
 @shared_task(bind=True,track_started=True)
 def task_add_devices_single(self,device_ip,device_username,device_password):
-    self.update_state(state='Querying RESTCONF interface and adding {} to database...'.format(device_ip))
+    self.update_state(state='Querying RESTCONF and adding <b>{}</b> to database.'.format(device_ip))
     new_device = new_iosxe_device(device_ip,device_username,device_password)
     r_status, r_content = new_device.add_to_database()
     self.update_state(state='COMPLETE')

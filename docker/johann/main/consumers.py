@@ -20,6 +20,7 @@ class StatusConsumer(WebsocketConsumer):
     def receive(self, text_data):
         """
         Based on the input from the StatusWebsocket do various functions
+        for now it is only one type for processing the celery task status
         """
         try:
             r_data = json.loads(text_data)
@@ -37,18 +38,13 @@ class StatusConsumer(WebsocketConsumer):
         """
         task = AsyncResult(id=task_id, app=app)
 
-        # possible endless loop!
-        # sending: {'type': 't_status', 'content': 'PENDING'}
-        # if empty task id
-        # if task_id found, continue?
-        while task.successful() != True:
+        if task.successful() == True:
+            if task_type == "task_normal":
+                self.send_status("t_result",task.result)
+            elif task_type == "task_content":
+                self.send_status("t_content_result",task.result)
+        else:
             self.send_status("t_status",task.state)
-            time.sleep(2)
-
-        if task_type == "task_normal":
-            self.send_status("t_result",task.result)
-        elif task_type == "task_content":
-            self.send_status("t_content_result",task.result)
 
     def send_status(self,type,content):
         """
@@ -60,5 +56,5 @@ class StatusConsumer(WebsocketConsumer):
             "type" : type,
             "content" : content
         }
-        print("sending: {}".format(msg))
+        #print("sending: {}".format(msg))
         self.send(json.dumps(msg))
