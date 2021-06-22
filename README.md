@@ -6,6 +6,8 @@
 
 ![](images/johann-teaser.png)
 
+**Get an Overview in this [YouTube Video](https://www.youtube.com/watch?v=MLNEQePZyKs)!**
+
 ## Features
 
 * Add single or multiple devices (.csv file) at once to the johann SQLite database
@@ -33,7 +35,7 @@
 
 ## Installation
 
-johann is easy installable with Docker Compose:
+johann is easy installable with Docker Compose! Just copy & paste into terminal:
 
 ```
 git clone https://github.com/flopach/johann-network-device-monitoring &&
@@ -42,6 +44,12 @@ docker-compose up
 ```
 
 After nginx has started, you can access the web-dashboard via [http://localhost](http://localhost).
+
+## Demo GIF
+
+![](images/johann-0.1.0-gif.gif)
+
+*(size: 11MB)*
 
 ## Screenshots
 
@@ -98,7 +106,7 @@ After nginx has started, you can access the web-dashboard via [http://localhost]
 
 ## Versioning
 
-**0.1.0pre** - Initial Release
+**0.1.0** - Initial Release
 
 ## Authors
 
@@ -111,3 +119,4 @@ This project is licensed under the Cisco Sample Code License 1.1 - see the [LICE
 ## Further Links
 
 * [Cisco DevNet Website](https://developer.cisco.com)
+* [YouTube Video](https://www.youtube.com/watch?v=MLNEQePZyKs)
