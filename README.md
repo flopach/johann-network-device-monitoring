@@ -36,8 +36,8 @@
 johann is easy installable with Docker Compose:
 
 ```
-git clone https://github.com/flopach/johann-network-device-monitoring
-cd johann-network-device-monitoring/docker/
+git clone https://github.com/flopach/johann-network-device-monitoring &&
+cd johann-network-device-monitoring/docker/ &&
 docker-compose up
 ```
 
@@ -74,8 +74,9 @@ After nginx has started, you can access the web-dashboard via [http://localhost]
 
 ## Known Limitations
 
-* Currently only the timezone CET is shown
+* Currently, only timezone CET is supported
 * Devices can only be deleted via Django Database Manager 
+* Passwords are not encrypted in the database 
 
 ## Technical Deep-Dive
 
