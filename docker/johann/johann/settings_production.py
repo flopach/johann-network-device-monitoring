@@ -18,7 +18,7 @@ IMG_FOLDER_PATH = os.path.join(BASE_DIR, "static/main/img/")
 
 SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = False
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
