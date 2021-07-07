@@ -1,0 +1,45 @@
+{% extends 'main/_base.html' %}
+
+{% block title %} Add Single Device {% endblock %}
+
+{% block content %}
+{{ response_output | json_script:"response_output" }}
+<script>task_status("task_content")</script>
+<div class="section">
+    <div class="row">
+        <div class="col-xl-5">
+            <div class="panel panel--loose panel--raised base-margin-bottom">
+                <h2 class="subtitle">Refresh all Device Data</h2>
+                <hr>
+                <form method="post" action="/refresh_all/">
+                    {% csrf_token %}
+                    <p>Do you want to refresh the device data from all your devices?</p>
+                    <button type="submit" name="refresh_all" class="btn btn--primary">Start</button>
+                </form>
+                <div id="status_box"></div>
+            </div>         
+        </div>
+        <div class="col-xl-7">
+            <div class="panel panel--loose panel--raised base-margin-bottom">
+                <h2 class="subtitle">What does it do?</h2>
+                <hr>
+                <div class="alert alert--info">
+                    <div class="alert__icon icon-info-outline"></div>
+                    <div class="alert__message">
+                        <p>This will update the device data from already exitsting devices which are already in the database.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="panel panel--loose panel--raised base-margin-bottom">
+                <h2 class="subtitle">Output</h2>
+                <hr>
+                <pre><code id="result"></code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

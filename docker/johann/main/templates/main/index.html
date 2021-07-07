@@ -1,0 +1,63 @@
+{% extends 'main/_base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="section">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="panel panel--loose panel--raised">
+                <div style="display: flex;">
+                    <div style="margin:20px;"><img src="{% static 'main/img/johann-logo-alone.png' %}" width="250" /></div>
+                    <div>
+                        <h2 class="section">johann is here to help!</h3>
+                        <h5>A simple network device monitoring tool for <strong>Cisco IOS XE devices</strong>.</h5>
+                        <h5>Showcasing the power of direct device communication with <b>RESTCONF</b>.</h5>
+                        <h5>Gathering <b>configuration and operational data</b> of your devices in a <u>structured</u> way!</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="row">
+        <div class="col-xl-4">
+            <div class="panel panel--loose panel--raised dbl-padding base-margin-bottom" style="height:100%;">
+                <h5>Do you have questions or requests?</h5>
+                <h5>Check out the docs on the <a href="https://github.com/flopach/johann-network-device-monitoring">Github repository</a>!</h5>
+            </div>
+        </div>
+        <div class="col-xl-8">
+            <div class="panel panel--loose panel--raised">
+                <img src="{% static 'main/img/johann-teaser.png' %}" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="panel panel--loose panel--raised base-margin-bottom">
+            <div class="subheader text-center"><h5>3 Simple Steps</h5></div>
+            <div class="steps steps--primary">
+                <div class="step visited">
+                    <div class="step__icon">1</div>
+                    <div class="step__label">Gather IP, username and password of your IOS-XE devices in a list.</div>
+                </div>
+                <div class="step active">
+                    <div class="step__icon">2</div>
+                    <div class="step__label">Import your devices with johann.</div>
+                </div>
+                <div class="step inactive">
+                    <div class="step__icon">3</div>
+                    <div class="step__label">Enjoy your gathered information from ALL devices in a single dashboard.</div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

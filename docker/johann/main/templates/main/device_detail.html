@@ -1,0 +1,327 @@
+{% extends 'main/_base.html' %}
+
+{% block title %} Device Detail {% endblock %}
+
+{% block content %}
+<div class="section">
+    <div class="row">
+        <div class="col-xl-8">
+            <div class="panel panel--loose panel--raised base-margin-bottom">
+                <h2 class="subtitle">Configuration</h2>
+                <hr>
+                <div class="responsive-table">
+                    <table class="table table--lined">
+                        <tr>
+                            <th>IP</th>
+                            <td><a href="https://{{ device.ip }}" title="Access WebUI" target="_blank">{{ device.ip }}</a> (webUI)</td>
+                        </tr>
+                        <tr>
+                            <th>Hostname</th>
+                            <td>{{ device.hostname }}</td>
+                        </tr>
+                        <tr>
+                            <th>IOS Users (privilege)</th>
+                            <td>
+                                {% for item in device.ios_users_list %}
+                                {{ item }}<br>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>IOS Bootfiles</th>
+                            <td>
+                                {% for item in device.ios_boot_files_list %}
+                                {{ item }}<br>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Domain Name</th>
+                            <td>{{ device.domain_name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Default Gateway</th>
+                            <td>{{ device.default_gateway }}</td>
+                        </tr>
+                        <tr>
+                            <th>Name-Server</th>
+                            <td>
+                                {% for item in device.name_server_list %}
+                                {{ item }}<br>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>NTP Servers</th>
+                            <td>
+                                {% for item in device.ntp_server_list %}
+                                {{ item }}<br>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Spanning-Tree Mode</th>
+                            <td>{{ device.spanning_tree_mode }}</td>
+                        </tr>
+                        <tr>
+                            <th>SNMP-Server Community</th>
+                            <td>
+                                {% for item in device.snmp_server_community_list %}
+                                {{ item }}<br>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>SNMP-Server Groups</th>
+                            <td>
+                                {% for item in device.snmp_server_groups_list %}
+                                {{ item }}<br>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>SNMP-Server Users</th>
+                            <td>
+                                {% for item in device.snmp_user_community_list %}
+                                {{ item }}<br>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>IOx</th>
+                            <td>
+                                {% if device.iox is True %}
+                                    <label class="switch disabled">
+                                        <input type="checkbox" checked="">
+                                        <span class="switch__input"></span>
+                                    </label>
+                                    <small>&nbsp;(enabled)</small>
+                                {% else %}
+                                    <label class="switch disabled">
+                                        <input type="checkbox">
+                                        <span class="switch__input"></span>
+                                    </label>
+                                    <small>&nbsp;(disabled)</small>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Smart Licensing:</th>
+                            <td>
+                                Transport Type: {{ device.lic_config_transport_type }} <br/>
+                                CSLU URL: {{ device.lic_config_cslu_url }}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="panel panel--loose panel--raised base-margin-bottom">
+                <h2 class="subtitle">Operational Data</h2>
+                <hr>
+                <div class="responsive-table">
+                    <table class="table table--lined">
+                        <tr>
+                            <th>IOS Version</th>
+                            <td>{{ device.ios_version_brief }}</td>
+                        </tr>
+                        <tr>
+                            <th>Part Number</th>
+                            <td>{{ device.part_number }}</td>
+                        </tr>
+                        <tr>
+                            <th>Serial Number</th>
+                            <td>{{ device.serial_number }}</td>
+                        </tr>
+                        <tr>
+                            <th>Current Time</th>
+                            <td>{{ device.current_time }}</td>
+                        </tr>
+                        <tr>
+                            <th>Uptime</th>
+                            <td>{{ device.uptime }}</td>
+                        </tr>
+                        <tr>
+                            <th>Last Reboot Reason:</th>
+                            <td>{{ device.last_reboot_reason }}</td>
+                        </tr>
+                        <tr>
+                            <th>ROMMON Version</th>
+                            <td>{{ device.rommon_version }}</td>
+                        </tr>
+                        <tr>
+                            <th>IOS Version details</th>
+                            <td>{{ device.ios_version_long }}</td>
+                        </tr>
+                        <tr>
+                            <th>UDI Key</th>
+                            <td>{{ device.lic_udi }}</td>
+                        </tr>
+                        <tr>
+                            <th>Licenses in use:</th>
+                            <td>
+                                {% if device.lic_used_licenses_list is None  %}
+                                    no license in use
+                                {% else %}
+                                    {% for license in device.lic_used_licenses_list %}
+                                    {{ license }}<br>
+                                    {% endfor %}
+                                {% endif %}  
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Image Files</th>
+                            <td>
+                                {% for images_files in device.images_files_list %}
+                                {{ images_files }}<br>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4">
+            <div class="panel panel--loose panel--raised base-margin-bottom" style="text-align:center;">
+                Last Database Update: {{ device.last_update }}
+            </div>
+            <div class="panel panel--loose panel--raised base-margin-bottom dbl-padding">
+                <h2 class="subtitle">Memory Status Snapshot</h2>
+                <hr>
+                <div class="subheader">Status: <b>{{ device.memory_status }}</b></div>
+                <div class="subheader">Total Memory: <b>{{ device.memory_total_mb }} MB</b></div>
+                <div class="subheader">Memory used: <b>{{ device.memory_used_percentage }}%</b></div>
+                <div class="progressbar progressbar--warning" data-percentage="{{ device.memory_used_percentage }}">
+                    <div class="progressbar__fill"></div>
+                </div>
+                <div class="subheader">Memory available: <b>{{ device.memory_available_percentage }}%</b></div>
+                <div class="progressbar progressbar--success" data-percentage="{{ device.memory_available_percentage }}">
+                    <div class="progressbar__fill"></div>
+                </div>
+            </div>
+            <div class="panel panel--loose panel--raised base-margin-bottom dbl-padding">
+                <h2 class="subtitle">CPU Status Snapshot</h2>
+                <hr>
+                <div class="subheader">CPU Utlization User: <b>{{ device.cpu_totalavg_user_percentage }}%</b></div>
+                <div class="progressbar progressbar--info" data-percentage="{{ device.cpu_totalavg_user_percentage|floatformat:0 }}">
+                    <div class="progressbar__fill"></div>
+                </div>
+                <div class="subheader">CPU Utlization System: <b>{{ device.cpu_totalavg_system_percentage }}%</b></div>
+                <div class="progressbar progressbar--secondary" data-percentage="{{ device.cpu_totalavg_system_percentage|floatformat:0 }}">
+                    <div class="progressbar__fill"></div>
+                </div>
+                <div class="subheader">CPU Utlization Idle: <b>{{ device.cpu_totalavg_idle_percentage }}%</b></div>
+                <div class="progressbar progressbar--success" data-percentage="{{ device.cpu_totalavg_idle_percentage|floatformat:0 }}">
+                    <div class="progressbar__fill"></div>
+                </div>
+            </div>
+            <div class="panel panel--loose panel--raised base-margin-bottom dbl-padding">
+                <h2 class="subtitle">Disk Status</h2>
+                <hr>
+                {% for partition in device.partitions_list %}           
+                    <div class="subheader"><b>{{ partition.p_name }}</b> {{ partition.p_status }} | Total: {{ partition.p_total_mb }} MB</div>
+                    <div class="subheader">Used: <b>{{ partition.p_used_mb }}MB</b></div>
+                    <div class="progressbar progressbar--warning" data-percentage="{{ partition.p_used_percent }}">
+                        <div class="progressbar__fill"></div>
+                    </div>
+                    <div class="subheader">Available: <b>{{ partition.p_free_mb }}MB</b></div>
+                    <div class="progressbar progressbar--success" data-percentage="{{ partition.p_free_percent }}">
+                        <div class="progressbar__fill"></div>
+                    </div>
+                    <div class="dbl-margin-top"></div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="panel panel--loose panel--raised base-margin-bottom">
+                <h2 class="subtitle">ARP Data</h2>
+                <hr>
+                <div class="responsive-table">
+                    <table class="table table--lined">
+                        {% for arp in device.arp_data_list %}
+                        <tr><td>{{ arp }}</td></tr>
+                    {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="panel panel--loose panel--raised base-margin-bottom">
+                <h2 class="subtitle">CDP Neighbors</h2>
+                <hr>
+                <div class="responsive-table">
+                    <table class="table table--lined">
+                        {% for cdp in device.cdp_neighbors_list %}
+                        <tr><td>{{ cdp }}</td></tr>
+                    {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="panel panel--loose panel--raised base-margin-bottom">
+                <h2 class="subtitle">INTERFACES</h2>
+                <hr>
+                <div class="responsive-table">
+                    <table class="table table--lined">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Name</th>
+                                <th class="text-center">Description</th>
+                                <th class="text-center hidden-xs-down">Admin-Status</th>
+                                <th class="text-center hidden-md-down">Operational Status</th>
+                                <th class="text-center hidden-mg-down">Physical Address</th>
+                                <th class="text-center hidden-ld-down">Duplex Mode</th>
+                                <th class="text-center hidden-lg-down">Port Speed</th>
+                                <th class="text-center hidden-lg-down">IPv4 Address</th>
+                                <th class="text-center hidden-lg-down">Last Change</th>
+                            </tr>
+                        </thead> <!-- icon-switch-outline icon-router-outline -->
+                        <tbody>
+                            {% for interface in device_interfaces_list %}
+                            <tr>
+                                <td>
+                                    <span class="icon-switch-outline icon-size-20 half-margin-right text-light"></span>
+                                    <span>{{ interface.fields.name }}</span>
+                                </td>
+                                <td class="text-center">{{ interface.fields.description }}</td>
+                                <td class="text-center hidden-xs-down">
+                                    {% if interface.fields.admin_status == "UP" %}
+                                        <span class="label label--success"><small>UP</small></span>
+                                    {% else %}
+                                        <span class="label label--danger"><small>DOWN</small></span>
+                                    {% endif %}
+                                </td>
+                                <td class="text-center hidden-md-down">
+                                    {% if interface.fields.oper_status == "UP and CONNECTED" %}
+                                        <span class="label label--success"><small>{{ interface.fields.oper_status }}</small></span>
+                                    {% elif interface.fields.oper_status == "administratively DOWN" %}
+                                        <span class="label label--warning"><small>{{ interface.fields.oper_status }}</small></span>
+                                    {% elif interface.fields.oper_status == "DOWN, ready to connect" %}
+                                        <span class="label label--danger"><small>{{ interface.fields.oper_status }}</small></span>
+                                    {% else %}
+                                        <span class="label label--danger"><small>{{ interface.fields.oper_status }}</small></span>
+                                    {% endif %}
+                                </td>
+                                <td class="hidden-md-down">{{ interface.fields.phys_address }}</td>
+                                <td class="hidden-lg-down">{{ interface.fields.duplex_mode }}</td>
+                                <td class="hidden-lg-down">{{ interface.fields.port_speed }}</td>
+                                <td class="hidden-lg-down">{{ interface.fields.ipv4 }}</td>
+                                <td class="hidden-lg-down">{{ interface.fields.last_change }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

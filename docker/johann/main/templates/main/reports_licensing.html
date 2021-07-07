@@ -1,0 +1,51 @@
+{% extends 'main/_base.html' %}
+
+{% block title %} All Devices {% endblock %}
+
+{% block content %}
+<div class="section">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="panel panel--loose panel--raised base-margin-bottom">
+                <h2 class="subtitle">Report: Licensing Overview</h2>
+                <hr>
+                <div class="responsive-table">
+                    <table class="table table--lined table--selectable">
+                        <thead>
+                            <tr>
+                                <th class="sortable">Hostname</th>
+                                <th class="text-center">IP address</th>
+                                <th class="text-center hidden-xs-down">License Configuration</th>
+                                <th class="hidden-ld-down">Reporting: Last ACK received</th>
+                                <th class="hidden-lg-down">Reporting: Next ACK deadline</th>
+                                <th class="hidden-lg-down">Policy: Name</th>
+                                <th class="hidden-lg-down">Policy: ACK required?</th>
+                                <th class="hidden-md-down">UDI Key</th>
+                                <th class="hidden-mg-down">Used Licenses</th>
+                            </tr>
+                        </thead> <!-- icon-switch-outline icon-router-outline -->
+                        <tbody>
+                            {% for device in response_output %}
+                            <tr>
+                                <td>
+                                    <span class="icon-switch-outline icon-size-20 half-margin-right text-light"></span>
+                                    <a href="/devices/{{ device.pk }}">{{ device.fields.hostname }}</a>
+                                </td>
+                                <td class="text-center">{{ device.fields.ip }}</td>
+                                <td class="text-center hidden-xs-down">{{ device.fields.lic_config_transport_type }} <br/> {{ device.fields.lic_config_cslu_url }} </td>
+                                <td class="hidden-lg-down">{{ device.fields.lic_rum_ack_last }}</td>
+                                <td class="hidden-lg-down">{{ device.fields.lic_rum_ack_next }}</td>
+                                <td class="hidden-lg-down">{{ device.fields.lic_policy_name }}</td>
+                                <td class="hidden-lg-down">{{ device.fields.lic_policy_ack_req }}</td>
+                                <td class="hidden-md-down">{{ device.fields.lic_udi }}</td>
+                                <td class="hidden-md-down">{{ device.fields.lic_used_licenses_list }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
