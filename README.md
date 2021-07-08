@@ -9,9 +9,9 @@
 
 **johann** is a web-based network device monitoring tool for **Cisco IOS XE devices**. Collect configuration and operational data of your networking devices in a structured way in one single database!
 
-![](images/johann-teaser.png)
+**Get an Overview in this [YouTube Video](https://youtu.be/qsJvul6yLBE)!**
 
-**Get an Overview in this [YouTube Video](https://www.youtube.com/watch?v=MLNEQePZyKs)!**
+![](images/johann-teaser.png)
 
 ## Features
 
@@ -118,4 +118,4 @@ This project is licensed under the Cisco Sample Code License 1.1 - see the [LICE
 ## Further Links
 
 * [Cisco DevNet Website](https://developer.cisco.com)
-* [YouTube Video](https://www.youtube.com/watch?v=MLNEQePZyKs)
+* [YouTube Video](https://youtu.be/qsJvul6yLBE)
