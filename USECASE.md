@@ -5,7 +5,7 @@ johann: Network Device Monitoring
 
 ![](images/johann-teaser.png)
 
-**Get a more detailed overview in this [YouTube Video](https://www.youtube.com/watch?v=MLNEQePZyKs)!**
+**Get a more detailed overview in this [YouTube Video](https://youtu.be/qsJvul6yLBE)!**
 
 ## Demo GIF
 
@@ -14,4 +14,3 @@ johann: Network Device Monitoring
 ## High Level Architecture
 
 ![](images/high-level-architecture.png)
-
