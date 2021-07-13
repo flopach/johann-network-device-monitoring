@@ -25,7 +25,7 @@
 	* Test RESTCONF: Get current configuration in JSON format
 	* Show logs
 
-### Supported Devices
+### Supported Devices*
 
 * ASR 1000
 * ASR 900 RSP2/RSP3, ASR 920, NCS 520 and NCS 4200
@@ -37,6 +37,8 @@
 * IE 3x00
 * ISR 1000
 * ISR 4000
+
+_*RESTCONF needs to be supported in the IOS XE version!_
 
 ## Installation
 
