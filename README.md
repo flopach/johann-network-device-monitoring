@@ -44,7 +44,7 @@ _*RESTCONF needs to be supported in the IOS XE version!_
 
 johann is easy installable:
 
-1. Install Docker Engine and [Docker Compose](https://docs.docker.com/compose/install/)
+1. Install Docker Engine and [Docker Compose](https://docs.docker.com/compose/install/) (already included on macOS and Windows)
 
 2. Then copy & paste into terminal (on Linux you may need to start Docker with a non-root user):
 
