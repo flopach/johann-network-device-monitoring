@@ -46,7 +46,7 @@ johann is easy installable:
 
 1. Install Docker Engine and [Docker Compose](https://docs.docker.com/compose/install/) (already included on macOS and Windows)
 
-2. Then copy & paste into terminal (on Linux you may need to start Docker with a non-root user):
+2. Then copy & paste into terminal (on Linux you may need to start Docker with a [non-root user](https://docs.docker.com/engine/install/linux-postinstall/)):
 
 ```
 git clone https://github.com/flopach/johann-network-device-monitoring &&
