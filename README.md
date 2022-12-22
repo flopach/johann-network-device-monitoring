@@ -9,7 +9,9 @@
 
 **johann** is a web-based network device monitoring tool for **Cisco IOS XE devices**. Collect configuration and operational data of your networking devices in a structured way in one single database!
 
-**Get an Overview in this [YouTube Video](https://youtu.be/qsJvul6yLBE)!**
+[![Get an Overview in this YouTube Video](https://img.youtube.com/vi/qsJvul6yLBE/mqdefault.jpg)](https://youtu.be/qsJvul6yLBE) 
+
+## Architecture
 
 ![](images/johann-teaser.png)
 
@@ -111,7 +113,8 @@ After all containers are up, you can access the web-dashboard via [http://localh
 
 ## Versioning
 
-**0.1.0** - Initial Release
+**0.1.1 (22.12.2022)** - Open sourced version of johann
+**0.1.0 (7.7.2021)** - Initial Release
 
 ## Authors
 
@@ -119,7 +122,7 @@ After all containers are up, you can access the web-dashboard via [http://localh
 
 ## License
 
-This project is licensed under the Cisco Sample Code License 1.1 - see the [LICENSE.md](LICENSE.md) file for details
+The project is licensed under the [Apache License version 2.0](LICENSE), except the fonts and CSS file. The OpenSans font is licensed under the [SIL Open Font License version 1.1](font.LICENSE). The cui-font and CSS file is copyright by Cisco (see [terms and conditions](http://cisco.com/en/US/swassets/sw293/sitewide_important_notices.html)).
 
 ## Further Links
 
