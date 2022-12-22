@@ -126,6 +126,10 @@ After all containers are up, you can access the web-dashboard via [http://localh
 
 * **Florian Pachinger** - *Initial work* - [flopach](https://github.com/flopach)
 
+## Contributing
+
+If you want to contribute to the project, please check [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## License
 
 The project is licensed under the [Apache License version 2.0](LICENSE), except the fonts and CSS file. The OpenSans font is licensed under the [SIL Open Font License version 1.1](font.LICENSE). The cui-font and CSS file is copyright by Cisco (see [terms and conditions](http://cisco.com/en/US/swassets/sw293/sitewide_important_notices.html)).
