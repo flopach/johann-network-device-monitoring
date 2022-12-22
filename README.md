@@ -116,7 +116,8 @@ After all containers are up, you can access the web-dashboard via [http://localh
 
 ## Versioning
 
-**0.1.1 (22.12.2022)** - Open sourced version of johann
+**0.1.1 (22.12.2022)** - Open source version of johann
+
 **0.1.0 (7.7.2021)** - Initial Release
 
 ## Authors
