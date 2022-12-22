@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+
+  redis:
+    image: redis:6.2.3-alpine
+    restart: always
+
+  johann:
+    build: ${PWD}/johann/.
+    restart: on-failure
+    volumes:
+      - static_content:/opt/johann/static/ #shared volume for static files
+      - ./johann/stickydata:/opt/johann/stickydata #for saving tmp files
+    depends_on:
+      - redis
+  
+  celery_worker:
+    build: ${PWD}/johann/.
+    command: celery -A johann worker -l INFO
+    restart: on-failure
+    volumes:
+      - ./johann/stickydata:/opt/johann/stickydata #for saving tmp files
+    depends_on:
+      - redis
+
+  nginx:
+    build: ${PWD}/nginx/.
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - static_content:/static #shared volume for static files
+    depends_on:
+      - johann
+      - redis
+
+volumes:
+  static_content:
+  stickydata:

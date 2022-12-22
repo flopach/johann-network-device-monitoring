@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <title>johann: {% block title %} {% endblock %}</title>
+        {% load static %}
+        <link href="{% static 'main/css/cui-standard.min.css' %}" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'main/img/favicon.png' %}">
+        <script src="{% static 'main/js/jquery-3.6.0.min.js' %}"></script>
+        <script src="{% static 'main/js/dashboard_helper.js' %}"></script>
+    </head>
+    <body class="cui">
+        <nav class="header" id="styleguideheader" role="navigation">
+            <div class="container-fluid">
+                <div class="header-panels">
+                    <div class="header-panel hidden-md-down">
+                        <a class="header__logo" href="https://github.com/flopach/johann-network-device-monitoring" target="_blank">
+                            <img src="{% static 'main/img/johann-logo-alone.png' %}" width="35" />
+                        </a>
+                        <h1 class="header__title">
+                            <span>johann: Network Device Monitoring</span>
+                        </h1>
+                    </div>
+                    <div class="header-panel header-panel--right hidden-md-down">
+                        <a href="https://github.com/flopach/johann-network-device-monitoring" class="header-item" target="_blank">johann Help & FAQ</a>
+                        <a href="https://developer.cisco.com" class="header-item" target="_blank">Cisco DevNet</a>
+                    </div>
+                        
+                </div>
+            </div>
+        </nav>
+        <div class="content content--alt">
+            <div class="container-fluid">
+                <div class="row">
+                    
+                    <!-- Sidebar -->
+                    <nav class="col-lg-3 col-xl-2 sidebar hidden-md-down dbl-margin-top dbl-padding-top" role="navigation">
+                    <ul id="rootSidebar">
+                        <li class="sidebar__item">
+                            <a tabindex="0" title="Assets" href="/index">
+                                <span class="icon-home"></span>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li class="sidebar__drawer sidebar__drawer--closed" id="drawer_devices">
+                            <a tabindex="0" title="Add Devices">
+                                <span class="icon-configurations"></span>
+                                <span>Add Devices</span>
+                            </a>
+                            <ul>
+                                <li class="sidebar__item"><a href="/add">Add Single Device</a></li>
+                                <li class="sidebar__item"><a href="/import">Import Multiple Devices</a></li>
+                            </ul>
+                        </li>
+                        <li class="sidebar__item">
+                            <a tabindex="0" title="Assets" href="/devices">
+                                <span class="icon-devices"></span>
+                                <span>Show all Devices</span>
+                            </a>
+                        </li>
+                        <li class="sidebar__drawer sidebar__drawer--closed" id="drawer_reports">
+                            <a tabindex="0" title="Reports">
+                                <span class="icon-graph"></span>
+                                <span>Reports</span>
+                            </a>
+                            <ul>
+                                <li class="sidebar__item"><a href="/device_stats/">Device Stats</a></li>
+                                <li class="sidebar__item"><a href="/oneview">One View + Export</a></li>
+                                <li class="sidebar__item"><a href="/licensing">Licensing Overview</a></li>
+                            </ul>
+                        </li>
+                        <li class="sidebar__drawer sidebar__drawer--closed" id="drawer_tools">
+                            <a tabindex="0" title="Tools">
+                                <span class="icon-tools"></span>
+                                <span>Tools</span>
+                            </a>
+                            <ul>
+                                <li class="sidebar__item"><a href="/admin">Database Admin</a></li>
+                                <li class="sidebar__item"><a href="/enable_restconf">Enable RESTCONF</a></li>
+                                <li class="sidebar__item"><a href="/raw_json">show run in JSON</a></li>
+                                <li class="sidebar__item"><a href="/logs">Logs</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    </nav>
+
+                    <!-- Content Block -->
+                    <div class="col-12 col-lg-9 col-xl-10">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
