@@ -9,7 +9,10 @@
 
 **johann** is a web-based network device monitoring tool for **Cisco IOS XE devices**. Collect configuration and operational data of your networking devices in a structured way in one single database!
 
-[![Get an Overview in this YouTube Video](https://img.youtube.com/vi/qsJvul6yLBE/mqdefault.jpg)](https://youtu.be/qsJvul6yLBE) 
+**Get an Overview in this YouTube Video:**
+
+[![Get an Overview in this YouTube Video](https://img.youtube.com/vi/qsJvul6yLBE/mqdefault.jpg)](https://youtu.be/qsJvul6yLBE)
+
 
 ## Architecture
 
