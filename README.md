@@ -14,9 +14,11 @@
 [![Get an Overview in this YouTube Video](https://img.youtube.com/vi/qsJvul6yLBE/mqdefault.jpg)](https://youtu.be/qsJvul6yLBE)
 
 
-## Architecture
+## johann Architecture
 
 ![](images/johann-teaser.png)
+
+Take a **look behind the scenes** of johann in the blog series at [https://blogs.cisco.com/tag/johann](https://blogs.cisco.com/tag/johann).
 
 ## Features
 
