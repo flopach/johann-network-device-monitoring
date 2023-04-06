@@ -172,7 +172,7 @@ def oneview_export_xls(response):
     file = io.BytesIO() #create file in memory
     df_devices = pd.DataFrame.from_records(iosxe_device.objects.values()) # put database in pandas dataframe
     writer = pd.ExcelWriter(file, engine='xlsxwriter') # create Excel-file
-    df_devices.to_excel(writer,sheet_name='Devices') # Put pandas dataframe into Excel-file
+    df_devices.to_excel(writer,sheet_name='Devices', index=False) # Put pandas dataframe into Excel-file
     writer.save()
     file.seek(0)
     return FileResponse(file,as_attachment=True,content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',filename='johann_devices.xlsx')
