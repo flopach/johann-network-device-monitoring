@@ -5,7 +5,6 @@ from django.forms.models import model_to_dict
 from django.core.files.storage import default_storage
 from django.http import FileResponse
 from django.conf import settings
-from requests.utils import CaseInsensitiveDict
 from .forms import AddSingleDevice,ImportMultipleDevices
 from .models import iosxe_device,iosxe_device_interfaces
 from .tasks import task_add_devices_single, task_add_devices_multiple, task_tools_raw_json, task_tools_enable_restconf, task_refresh_all
@@ -16,7 +15,7 @@ import matplotlib
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import io
-import os 
+
 
 logger = logging.getLogger("applogger")
 
@@ -102,10 +101,10 @@ def reports_device_stats(response):
     if df_devices.empty:
         response_output["status"] = "empty"
         return render(response, "main/reports_device_stats.html", { "response_output" : response_output })
-    
+
     try:
         # Get total number of devices in the database
-        response_output["total_devices"] = number_of_rows = len(df_devices.index)
+        response_output["total_devices"] = len(df_devices.index)
 
         # plot IOS XE versions
         ios_version_count = df_devices['ios_version_brief'].value_counts() 
@@ -146,8 +145,7 @@ def reports_device_stats(response):
         response_output["status"] = "success"
     except Exception as e:
         response_output["status"] = "error"
-        logger.exception("Error! Could not create report graphs: {}".format(e))
-        pass
+        logger.exception(f"Error! Could not create report graphs: {e}")
 
     return render(response, "main/reports_device_stats.html", { "response_output" : response_output })
 
@@ -156,7 +154,7 @@ def reports_oneview(response):
     Return all device information in one view
     """
     df_devices = pd.DataFrame.from_records(iosxe_device.objects.values())
-    return render(response, "main/reports_oneview.html", { "response_output" : df_devices.to_html(classes="table table--lined") })
+    return render(response, "main/reports_oneview.html", { "response_output" : df_devices.to_html(classes="table table--lined", index=False) })
 
 def reports_licensing(response):
     """
@@ -186,9 +184,9 @@ def tools_logs(response):
     Simply return the logfile.
     """
     try:
-        with open("{}/debug.log".format(settings.MEDIA_ROOT),"r") as logfile:
+        with open(f"{settings.MEDIA_ROOT}/debug.log", "r") as logfile:
             logs = logfile.read()
-    except Exception as e:
+    except Exception:
         logs = "Error: can't fetch log file. Maybe nothing got logged yet?"
         logger.exception("Error: can't fetch log file.")
 
