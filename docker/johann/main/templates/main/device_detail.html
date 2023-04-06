@@ -201,15 +201,15 @@
             <div class="panel panel--loose panel--raised base-margin-bottom dbl-padding">
                 <h2 class="subtitle">CPU Status Snapshot</h2>
                 <hr>
-                <div class="subheader">CPU Utlization User: <b>{{ device.cpu_totalavg_user_percentage }}%</b></div>
+                <div class="subheader">CPU Utilization User: <b>{{ device.cpu_totalavg_user_percentage }}%</b></div>
                 <div class="progressbar progressbar--info" data-percentage="{{ device.cpu_totalavg_user_percentage|floatformat:0 }}">
                     <div class="progressbar__fill"></div>
                 </div>
-                <div class="subheader">CPU Utlization System: <b>{{ device.cpu_totalavg_system_percentage }}%</b></div>
+                <div class="subheader">CPU Utilization System: <b>{{ device.cpu_totalavg_system_percentage }}%</b></div>
                 <div class="progressbar progressbar--secondary" data-percentage="{{ device.cpu_totalavg_system_percentage|floatformat:0 }}">
                     <div class="progressbar__fill"></div>
                 </div>
-                <div class="subheader">CPU Utlization Idle: <b>{{ device.cpu_totalavg_idle_percentage }}%</b></div>
+                <div class="subheader">CPU Utilization Idle: <b>{{ device.cpu_totalavg_idle_percentage }}%</b></div>
                 <div class="progressbar progressbar--success" data-percentage="{{ device.cpu_totalavg_idle_percentage|floatformat:0 }}">
                     <div class="progressbar__fill"></div>
                 </div>
